@@ -18,3 +18,5 @@ router.get('/waters/:id', water_controller.water_detail);
 // GET request for list of all water items.
 router.get('/waters', water_controller.water_list);
 module.exports = router;
+// GET request for one water.
+router.get('/water/:id', water_controller.water_detail);
