@@ -1,0 +1,45 @@
+extends layout 
+
+block content 
+  h1= title 
+    - let id = toShow._id 
+    - let Water_Name = toShow.Water_Name 
+    - let Water_Company = toShow.Water_Company 
+    - let Water_cost = toShow.Water_cost 
+    - let Water_Rating  = toShow.Water_Rating 
+    div.row(class='mb-2') 
+        div.mr-1  ID is 
+        div #{id} 
+    - let actionid = "/resource/waters/" + id 
+    form(id='waterForm', action= actionid, method="PUT") 
+        div.form-group 
+            label.waterAttr(for='Water_Name') Water Name 
+            input#Water_Name(type='text', name='Water_Name', value= Water_Name ) 
+        div.form-group 
+            label.waterAttr(for='Water_Company') Water Company 
+            input#Water_Company(type='text', name='Water_Company', value= Water_Company ) 
+        div.form-group 
+            label.waterAttr(for='Water_cost') Water Cost 
+            input#Water_cost(type='number', name='Water_cost', value= Water_cost )
+        div.form-group 
+            label.waterAttr(for='Water_Rating') Water Rating 
+            input#Water_Rating(type='number', name='Water_Rating', value= Water_Rating )  
+        input(type="submit") 
+        
+    script. 
+        document.forms['waterForm'].addEventListener('submit', (event) => { 
+        event.preventDefault(); 
+        // TODO do something here to show user that form is being submitted 
+        fetch(event.target.action, { 
+            method: 'PUT', 
+            body: new URLSearchParams(new FormData(event.target)) 
+        }).then((resp) => { 
+            return resp.json(); // or resp.text() or whatever the server sends 
+        }).then((body) => { 
+            alert("Update succeded") 
+            // TODO handle body 
+        }).catch((error) => { 
+            // TODO handle error 
+            alert("Update failed " + error ) 
+        }); 
+        });

@@ -1,0 +1,54 @@
+extends layout 
+
+block content 
+  h1= title 
+  if (toShow == null) 
+    h2 No instance to delete 
+  else 
+    - let id = toShow._id 
+    - let Water_Name = toShow.Water_Name 
+    - let Water_Company = toShow.Water_Company 
+    - let Water_cost = toShow.Water_cost 
+    - let Water_Rating = toShow.Water_Rating 
+    - let actionid = "/resource/waters/" + id 
+    script let actionid = "#{actionid}" 
+    div 
+      div.row 
+        div(class='waterAttr mr-3') Water ID is: 
+        div #{id} 
+      div.row 
+        div(class='waterAttr mr-3') Water Name is: 
+        div #{Water_Name} 
+      div.row 
+        div(class='waterAttr mr-3') Water Company  is: 
+        div #{Water_Company} 
+      div.row 
+        div(class='waterAttr mr-3') Water Cost is: 
+        div #{Water_cost}
+      div.row 
+        div(class='waterAttr mr-3') Water Rating is: 
+        div #{Water_Rating}  
+    button(class="btn btn-danger m-2" onclick="deleteOnid()") Delete 
+    button(class="btn btn-secondary m-2" onclick="cancel()") Cancel 
+  script. 
+    function cancel() { 
+      // Go back to the home page for the water collection 
+      window.location.href='/water' 
+    } 
+  script. 
+    function deleteOnid() { 
+      console.log("starting delete") 
+      // delete first 
+      fetch(actionid, { 
+        method: 'DELETE'      
+      }).then((resp) => { 
+        return resp.json(); 
+      }).then((body) => { 
+        alert("Delete succeded") 
+        window.location.href='/water' 
+        // TODO handle body 
+      }).catch((error) => { 
+        // TODO handle error 
+        alert("Delete failed " + error ) 
+      }); 
+    }
