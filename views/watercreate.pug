@@ -1,7 +1,9 @@
 extends layout
 block content
         h1= title
-        form(id='waterForm', action="/resource/waters", method="POST")
+        form(id='carForm', action="/resource/cars", method="POST" ,class='d')
+            div(class='d').form-group
+              img(src='/images/bisleri.jpg' width="100px" height="100px")
             div.form-group
                 label.waterAttr(for='Water_Name') Water Name 
                 input#Water_Name(type='text', name='Water_Name')

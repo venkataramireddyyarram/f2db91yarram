@@ -20,3 +20,15 @@ router.get('/waters', water_controller.water_list);
 module.exports = router;
 // GET request for one water.
 router.get('/water/:id', water_controller.water_detail);
+// Handle Costume delete on DELETE.
+exports.costume_delete = async function(req, res) {
+ console.log("delete " + req.params.id)
+ try {
+ result = await Costume.findByIdAndDelete( req.params.id)
+ console.log("Removed " + result)
+ res.send(result)
+ } catch (err) {
+ res.status(500)
+ res.send(`{"error": Error deleting ${err}}`);
+ }
+};

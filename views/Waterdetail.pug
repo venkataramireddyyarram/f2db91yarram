@@ -1,7 +1,7 @@
 extends layout 
 
 block content 
-    h1= title 
+    h1(class='container-fluid p-5 bg-danger text-success text-center')= title
     - let id = toShow._id 
     - let Water_Name = toShow.Water_Name 
     - let Water_Company = toShow.Water_Company 
@@ -9,17 +9,18 @@ block content
     - let Water_Rating = toShow.Water_Rating
     div 
         div.row
+        div(class="container text-center")
         div(class='waterAttr mr-3') Water ID is: 
         div #{id} 
         div.row 
-        div(class='waterAttr mr-3') Water Name is: 
+        div(class='p-2  bg-primary flex-fill waterAttr mr-3') Water Name is: 
         div #{Water_Name} 
         div.row 
-        div(class='waterAttr mr-3') Water Company is: 
+        div(class='p-2 bg- danger flex-fill waterAttr mr-3') Water Company is: 
         div #{Water_Company} 
         div.row 
-        div(class='waterAttr mr-3') Water Cost is: 
+        div(class='p-2 bg-secondary flex-fill waterAttr mr-3') Water Cost is: 
         div #{Water_cost}
         div.row 
-        div(class='waterAttr mr-3') Water Rating is: 
+        div(class='p-2 flex-fill waterAttr mr-3') Water Rating is: 
         div #{Water_Rating}
