@@ -1,13 +1,21 @@
 extends layout
+
 block content
-    h1= title
-    - var results = results
-    //- var results = [{"Water_Name": "Drinking Water", "Water_Company": "Great Value", "Water_cost": 5.8, "Water_Rating": 4.5},{"Water_Name": "Distilled water", "Water_Company": "Bisleri", "Water_cost": 10.5, "Water_Rating": 4.7},{"Water_Name": "Purified water", "Water_Company": "Kinley", "Water_cost": 11.1, "Water_Rating": 4.8}]
-    div.container-fluid 
-        div.row 
-            each item, index in results
-                div.col-sm-2(onclick=`buy(${index})`) Water Name: #{item["Water_Name"]} <br> Water Company: #{item["Water_Company"]} <br> Water cost: #{item["Water_cost"]} <br> Water Rating: #{item["Water_Rating"]}
-        script.
-            function buy(index) {
-             alert("You purchased item " + index)
-                }
+  h1= title
+  - let result=results
+  div(class="container-fluid")
+     div(class='row m-1')
+        each item,index in result
+            -let destination = `dispatch(\"/water/update?id=${item._id}\")`
+            div.col-sm-2(onclick=`buy(${index})`) Water Name: #{item["Water_Name"]} <br> Water Company: #{item["Water_Company"]} <br> Water cost: #{item["Water_cost"]} <br> Water Rating: #{item["Water_Rating"]}
+                button.btn(class="btn-primary ml-1", onclick = destination) Update
+
+  script.
+      function buy(index){
+         alert("you purchased item "+(index+1))
+      }
+
+  script.
+      function dispatch(path){
+      window.location.href=path
+      }
