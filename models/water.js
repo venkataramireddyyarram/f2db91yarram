@@ -5,5 +5,4 @@ Water_Company: {type: String,required: [true, 'Company of the Water cannot be em
 Water_cost: {type: Number,required: [true, 'cost of the water cannot be empty']},
 Water_Rating: {type: Number,required: [true, 'Rating of the water cannot be empty']}
 })
-module.exports = mongoose.model("water",
-waterSchema)
+module.exports = mongoose.model("water",waterSchema)

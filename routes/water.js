@@ -16,7 +16,7 @@ const secured = (req, res, next) => {
     }
 
 /* GET water */ 
-router.get('/', water_controller.water_view_all_Page ); 
+router.get('/', water_controller.water_view_all_Page );
 
 // GET request for one water. 
 router.get('/waters/:id', water_controller.water_detail);
