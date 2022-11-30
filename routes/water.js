@@ -25,12 +25,12 @@ router.get('/waters/:id', water_controller.water_detail);
 router.get('/detail', water_controller.water_view_one_Page); 
 
 /* GET create water page */ 
-router.get('/create', water_controller.water_create_Page); 
+router.get('/create',secured, water_controller.water_create_Page); 
 
 /* GET create update page */ 
 router.get('/update',secured, water_controller.water_update_Page);
 
 /* GET delete water page */ 
-router.get('/delete', water_controller.water_delete_Page); 
+router.get('/delete',secured, water_controller.water_delete_Page); 
 
 module.exports = router;
